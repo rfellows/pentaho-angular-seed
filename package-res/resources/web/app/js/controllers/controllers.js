@@ -1,8 +1,8 @@
-pen.define([
+define([
 	"common-ui/angular",
 	"common-ui/angular-resource",
 	"common-ui/angular-route",
-	"_sample_/util"
+	"util"
 	],
 
 	function(angular, Resource, Route, Utils){

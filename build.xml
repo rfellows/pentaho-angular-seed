@@ -2,6 +2,7 @@
 
   <!-- property overrides -->
   <property name="js.module.script.dir" value="package-res/resources/web/app/js"/>
+  <property name="js.module.lib.dir" value="package-res/resources/web/app/lib"/>
   <!-- end property overrides -->
 
   <!-- Import the subfloor-pkg.xml file which contains all the default ant targets -->
