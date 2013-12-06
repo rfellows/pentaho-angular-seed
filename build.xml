@@ -63,9 +63,15 @@
 
   <target name="quick-build.js" description="Builds debug JS modules for development">
     <delete dir="${js.module.script.agg.dir}/app" />
+    <delete dir="${js.module.script.agg.dir}/lib" />
     <delete dir="${js.build.output.dir}" />
     <copy todir="${js.module.script.agg.dir}/app" overwrite="true">
       <fileset dir="${js.module.script.dir}">
+        <include name="**/*"/>
+      </fileset>
+    </copy>
+    <copy todir="${js.module.script.agg.dir}/lib" overwrite="true">
+      <fileset dir="${js.module.lib.dir}">
         <include name="**/*"/>
       </fileset>
     </copy>
