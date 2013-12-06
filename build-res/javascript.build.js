@@ -37,6 +37,8 @@
     'common-ui/ring': { deps: ['underscore'], exports: 'ring' }
 
   },
+
+  namespace: "pen",
   
   include: "requireLib",
 
@@ -60,7 +62,34 @@
 
   modules: [
     {
-      name: "main"
+      name: "main",
+      exclude: [
+        "common-ui"
+      ]
+    },
+    {
+      name: "common-ui",
+      include: [
+        'common-ui/jquery', 
+        'common-ui/angular', 
+        'common-ui/angular-resource', 
+        'common-ui/angular-route',
+        'common-ui/angular-ui-bootstrap',
+        'common-ui/PluginHandler',
+        'common-ui/Plugin',
+        'common-ui/AngularPluginHandler',
+        'common-ui/AngularPlugin',
+        'common-ui/AnimatedAngularPluginHandler',
+        'common-ui/AnimatedAngularPlugin',
+        'common-ui/angular-animate',
+        'common-ui/ring',
+        'underscore'
+
+      ],
+      exclude: [
+        "main"
+      ],
+      create: true
     }
   ]
 })
