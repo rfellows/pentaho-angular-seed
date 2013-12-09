@@ -3,10 +3,10 @@ define([
   "common-ui/angular", 
   "common-ui/angular-route", 
   "common-ui/AnimatedAngularPluginHandler",
-  "controllers/controllers",
-  "services/services",
-  "filters/filters",
-  "util",
+  "_sample_/controllers/controllers",
+  "_sample_/services/services",
+  "_sample_/filters/filters",
+  "_sample_/util",
   "common-ui/angular-ui-bootstrap",
   "common-ui/angular-resource"
   ], function(angular, Route, AnimatedAngularPluginHandler, controllers, services, filters, Util){

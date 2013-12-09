@@ -21,7 +21,8 @@
 
     'common-ui/angular-animate': '../lib/provided/common-ui/resources/web/angular/angular-animate',
     'common-ui/ring': '../lib/provided/common-ui/resources/web/ring/ring',
-    'underscore': '../lib/provided/common-ui/resources/web/underscore/underscore'
+    'underscore': '../lib/provided/common-ui/resources/web/underscore/underscore',
+    "_sample_": '.'
   },
 
   shim: {
@@ -62,7 +63,7 @@
 
   modules: [
     {
-      name: "main",
+      name: "app",
       exclude: [
         "common-ui"
       ]
@@ -87,7 +88,7 @@
 
       ],
       exclude: [
-        "main"
+        "app"
       ],
       create: true
     }

@@ -1,6 +1,6 @@
-pen.require([
+require([
   'mantle/puc-api/pucAngularPlugin',
-  'app'
+  '_sample_/app'
   ], function(PUCAngularPlugin, appConfig) {
   
   var plugin = new PUCAngularPlugin(appConfig).register();

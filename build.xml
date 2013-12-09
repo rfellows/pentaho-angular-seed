@@ -95,6 +95,17 @@
         <exclude name="**/standalone*" />
       </fileset>
     </copy>
+    <!-- bring in the 'compiled' js scripts -->
+    <copy todir="${approot.stage.dir}/${js.module.script.dir}" overwrite="true">
+      <fileset dir="${js.build.output.dir}">
+        <!-- don't copy the js files that will be provided by the platform  -->
+        <exclude name="**/resources/web/app/lib/provided/**" />
+        <!-- don't copy anything in a test folder -->
+        <exclude name="**/test/**" />
+        <!-- remove all standalone references as well -->
+        <exclude name="**/standalone*" />
+      </fileset>
+    </copy>
     <chmod perm="a+x" dir="${stage.dir}" includes="**/*.sh" />
   </target>
 

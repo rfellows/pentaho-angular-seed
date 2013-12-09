@@ -2,7 +2,7 @@ define([
 	"common-ui/angular",
 	"common-ui/angular-resource",
 	"common-ui/angular-route",
-	"util"
+	"_sample_/util"
 	],
 
 	function(angular, Resource, Route, Utils){

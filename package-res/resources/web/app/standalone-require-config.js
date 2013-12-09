@@ -1,3 +1,12 @@
+
+pen = {};
+pen.require = function() {
+    return require.apply(this, arguments);
+} 
+pen.define = function() {
+    return define.apply(this, arguments);
+}
+
 requirejs.config({
   baseUrl: '.',
   paths: {

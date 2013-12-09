@@ -2,7 +2,7 @@ require([
   "common-ui/angular", 
   "common-ui/angular-route",
   "common-ui/AnimatedAngularPlugin",
-  "app"
+  "_sample_/app"
   ], function(angular, Route, AnimatedAngularPlugin, appConfig){
 
   var plugin = new AnimatedAngularPlugin(appConfig);
