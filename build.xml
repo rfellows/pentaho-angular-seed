@@ -61,6 +61,9 @@
   <target name="dist-js" depends="quick-build.js, subfloor-js.dist-js">
   </target>
 
+  <target name="dist-release-js" depends="release-build.js, subfloor-js.dist-js">
+  </target>
+
   <target name="quick-build.js" description="Builds debug JS modules for development">
     <delete dir="${js.module.script.agg.dir}/app" />
     <delete dir="${js.module.script.agg.dir}/lib" />
@@ -78,7 +81,28 @@
     <exec executable="node">
       <arg value="node_modules/requirejs/bin/r.js"/>
       <arg value="-o"/>
-      <arg value="build-res/javascript.build.js"/>
+      <arg value="build-res/javascript.dev-build.js"/>
+    </exec>
+  </target>
+
+  <target name="release-build.js" description="Builds debug JS modules for release">
+    <delete dir="${js.module.script.agg.dir}/app" />
+    <delete dir="${js.module.script.agg.dir}/lib" />
+    <delete dir="${js.build.output.dir}" />
+    <copy todir="${js.module.script.agg.dir}/app" overwrite="true">
+      <fileset dir="${js.module.script.dir}">
+        <include name="**/*"/>
+      </fileset>
+    </copy>
+    <copy todir="${js.module.script.agg.dir}/lib" overwrite="true">
+      <fileset dir="${js.module.lib.dir}">
+        <include name="**/*"/>
+      </fileset>
+    </copy>
+    <exec executable="node">
+      <arg value="node_modules/requirejs/bin/r.js"/>
+      <arg value="-o"/>
+      <arg value="build-res/javascript.release-build.js"/>
     </exec>
   </target>
 

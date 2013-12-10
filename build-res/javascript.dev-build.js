@@ -1,6 +1,6 @@
 ({
   appDir: "./module-scripts/app/",
-  optimize: "uglify",
+  optimize: "none",
   optimizeCss: "none",
   baseUrl: ".",
   dir: "../bin/scriptOutput",
