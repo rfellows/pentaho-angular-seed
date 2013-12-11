@@ -1,6 +1,11 @@
+/*
+ * requirejs configuration file
+ * used for both builds
+ */
+
 ({
   appDir: "./module-scripts/app/",
-  optimize: "none",
+//  optimize: "uglify2", is defined via the build command
   optimizeCss: "none",
   baseUrl: ".",
   dir: "../bin/scriptOutput",
@@ -39,26 +44,28 @@
 
   },
 
+  //generateSourceMaps: true, is defined via the build command 
+  //preserveLicenseComments: false, is defined via the build command 
+
   namespace: "pen",
   
   include: "requireLib",
 
-  uglify: {
-    toplevel: true,
-    ascii_only: true,
-    beautify: false,
-    max_line_length: 1000,
-
-    //How to pass uglifyjs defined symbols for AST symbol replacement,
-    //see "defines" options for ast_mangle in the uglifys docs.
-    defines: {
-        DEBUG: ['name', 'false']
-    },
-
-    //Custom value supported by r.js but done differently
-    //in uglifyjs directly:
-    //Skip the processor.ast_mangle() part of the uglify call (r.js 2.0.5+)
-    no_mangle: true
+  uglify2: {
+      //Example of a specialized config. If you are fine
+      //with the default options, no need to specify
+      //any of these properties.
+      output: {
+          beautify: false
+      },
+      compress: {
+          sequences: false,
+          global_defs: {
+              DEBUG: false
+          }
+      },
+      warnings: true,
+      mangle: true
   },
 
   modules: [

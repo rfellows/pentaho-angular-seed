@@ -58,13 +58,7 @@
     </if>
   </target>
 
-  <target name="dist-js" depends="quick-build.js, subfloor-js.dist-js">
-  </target>
-
-  <target name="dist-release-js" depends="release-build.js, subfloor-js.dist-js">
-  </target>
-
-  <target name="quick-build.js" description="Builds debug JS modules for development">
+  <target name="setup-dirs" description="Setups dirs needed for r.js build">
     <delete dir="${js.module.script.agg.dir}/app" />
     <delete dir="${js.module.script.agg.dir}/lib" />
     <delete dir="${js.build.output.dir}" />
@@ -78,31 +72,38 @@
         <include name="**/*"/>
       </fileset>
     </copy>
+  </target>
+
+  <target name="dist-js" depends="quick-build.js, subfloor-js.dist-js"/>
+  <target name="dist-release-js" depends="release-build.js, subfloor-js.dist-js"/>
+  <target name="dist-maps-release-js" depends="release-build-map.js, subfloor-js.dist-js"/>
+
+  <target name="quick-build.js" description="Builds debug JS modules for development" depends="setup-dirs">
     <exec executable="node">
       <arg value="node_modules/requirejs/bin/r.js"/>
       <arg value="-o"/>
-      <arg value="build-res/javascript.dev-build.js"/>
+      <arg value="build-res/javascript.build.js"/>
+      <arg value="optimize=none"/>
     </exec>
   </target>
 
-  <target name="release-build.js" description="Builds debug JS modules for release">
-    <delete dir="${js.module.script.agg.dir}/app" />
-    <delete dir="${js.module.script.agg.dir}/lib" />
-    <delete dir="${js.build.output.dir}" />
-    <copy todir="${js.module.script.agg.dir}/app" overwrite="true">
-      <fileset dir="${js.module.script.dir}">
-        <include name="**/*"/>
-      </fileset>
-    </copy>
-    <copy todir="${js.module.script.agg.dir}/lib" overwrite="true">
-      <fileset dir="${js.module.lib.dir}">
-        <include name="**/*"/>
-      </fileset>
-    </copy>
+  <target name="release-build.js" description="Builds debug JS modules for release" depends="setup-dirs">
     <exec executable="node">
       <arg value="node_modules/requirejs/bin/r.js"/>
       <arg value="-o"/>
-      <arg value="build-res/javascript.release-build.js"/>
+      <arg value="build-res/javascript.build.js"/>
+      <arg value="optimize=uglify2"/>
+    </exec>
+  </target>
+
+  <target name="release-build-map.js" description="Builds debug JS modules for release" depends="setup-dirs">
+    <exec executable="node">
+      <arg value="node_modules/requirejs/bin/r.js"/>
+      <arg value="-o"/>
+      <arg value="build-res/javascript.build.js"/>
+      <arg value="optimize=uglify2"/>
+      <arg value="generateSourceMaps=true"/>
+      <arg value="preserveLicenseComments=false"/>
     </exec>
   </target>
 
