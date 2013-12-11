@@ -31,6 +31,7 @@
 
   <target name="clean-js" depends="subfloor-js.clean-js">
     <delete dir="${js.expanded.lib.dir}" />
+    <delete dir="${js.module.script.agg.dir}" />
   </target>
 
   <target name="npm-install">

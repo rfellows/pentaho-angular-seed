@@ -41,6 +41,8 @@
     'common-ui/angular-animate': { deps: ['common-ui/angular'] },
     'underscore': { exports: '_' },
     'common-ui/ring': { deps: ['underscore'], exports: 'ring' }
+//    '_sample_/app': { deps: ['app'] }
+//    'myApp': { deps: ['_sample_/app'] }
 
   },
 
@@ -70,20 +72,12 @@
 
   modules: [
     {
-      name: "myApp",
-      include: [
-        "_sample_/app"
-      ],
+      name: "core",
+      include: ["_sample_/app"],
       exclude: [
         "common-ui"
       ],
       create: true
-    },
-    {
-      name: "_sample_/app",
-      exclude: [
-        "common-ui"
-      ]
     },
     {
       name: "common-ui",
@@ -105,7 +99,7 @@
 
       ],
       exclude: [
-        "_sample_/app"
+        "core"
       ],
       create: true
     }
