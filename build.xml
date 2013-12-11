@@ -1,7 +1,8 @@
 <project name="${plugin.id}" basedir="." default="default">
 
   <!-- property overrides -->
-  <property name="js.module.script.dir" value="package-res/resources/web/app/js"/>
+  <property name="js.module.dir" value="resources/web/app/js"/>
+  <property name="js.module.script.dir" value="package-res/${js.module.dir}"/>
   <property name="js.module.lib.dir" value="package-res/resources/web/app/lib"/>
   <!-- end property overrides -->
 
@@ -121,7 +122,7 @@
       </fileset>
     </copy>
     <!-- bring in the 'compiled' js scripts -->
-    <copy todir="${approot.stage.dir}/${js.module.script.dir}" overwrite="true">
+    <copy todir="${approot.stage.dir}/${js.module.dir}" overwrite="true">
       <fileset dir="${js.build.output.dir}">
         <!-- don't copy the js files that will be provided by the platform  -->
         <exclude name="**/resources/web/app/lib/provided/**" />
@@ -129,6 +130,7 @@
         <exclude name="**/test/**" />
         <!-- remove all standalone references as well -->
         <exclude name="**/standalone*" />
+        <exclude name="**/build.txt" />
       </fileset>
     </copy>
     <chmod perm="a+x" dir="${stage.dir}" includes="**/*.sh" />
