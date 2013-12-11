@@ -4,7 +4,7 @@
  */
 
 ({
-  appDir: "./module-scripts/app/",
+  appDir: "./module-scripts/app",
 //  optimize: "uglify2", is defined via the build command
   optimizeCss: "none",
   baseUrl: ".",
@@ -70,7 +70,17 @@
 
   modules: [
     {
-      name: "app",
+      name: "myApp",
+      include: [
+        "_sample_/app"
+      ],
+      exclude: [
+        "common-ui"
+      ],
+      create: true
+    },
+    {
+      name: "_sample_/app",
       exclude: [
         "common-ui"
       ]
@@ -95,7 +105,7 @@
 
       ],
       exclude: [
-        "app"
+        "_sample_/app"
       ],
       create: true
     }
